@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   devise_scope :user do
+    get "/login" => "devise/sessions#new"
+    get "/sign_up" => "devise/registrations#new"
     authenticated :user do
       root :to => 'private#index', as: :authenticated_root
     end
