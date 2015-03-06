@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   get 'private/index'
 
   devise_for :users
+  devise_scope :user do
+    authenticated :user do
+      root :to => 'private#index', as: :authenticated_root
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
